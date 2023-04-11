@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Vue.js App</title>
+  <link rel="stylesheet" href="main.css">
+</head>
+<body>
+  <div id="app">
+    <h1>チュートリアルToDoリスト</h1>
+    <label v-for="label in filterOptions" v-bind:key="label.value">
+      <input type="radio" v-model="currentFilter" v-bind:value="label.value" />
+      {{ label.label }}
+    </label>
+    <table>
+      <!-- テーブルヘッダー -->
+      <thead>
+        <tr>
+          <th class="done">完了</th>
+          <th class="id">ID</th>
+          <th class="content">内容</th>
+          <th class="button">-</th>
+        </tr>
+      </thead>
+      <tbody>
+        <!-- [1] ここに <tr> で ToDo の要素を1行ずつ繰り返し表示したい -->
+        <tr v-for="item in filterdTodos" v-bind:key="item.id">
+          <th class="done"><input type="checkbox" v-model="item.isDone" /></th>
+          <th class="id">{{ item.id }}</th>
+          <td class="content">{{ item.content }}</td>
+          <td class="button">
+            <button v-on:click="removeTodo(item)">削除</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+
+    <h2>新しいTODOの追加</h2>
+    <form class="add-form" v-on:submit.prevent="addTodo">
+      <!-- 内容入力フォーム -->
+      内容 <input type="text" ref="todoContent">
+      <!-- 追加ボタンのモック -->
+      <button type="submit">追加</button>
+    </form>
+  </div>
+
+  <!-- CDN からスタンドアロン版の Vue.js ファイルを読み込み -->
+  <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+  <script src="main.js" type="module"></script>
+</body>
+</html>
