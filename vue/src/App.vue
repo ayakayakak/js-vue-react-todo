@@ -20,7 +20,7 @@ const todoStorage = {
 }
 
 const todos = ref([])
-const todoContent = ref(null)
+const newTodoInput = ref(null)
 
 const filterOptions = [
   { value: 'all', label: 'すべて' },
@@ -39,7 +39,7 @@ watch(todos, () => {
 
 const addTodo = () => {
   // テンプレート参照を使ってTODOの内容の入力値を参照
-  const content = todoContent.value.value
+  const content = newTodoInput.value.value
   // 入力がなければ何もしないでreturn
   if (!content.length) {
     return
@@ -52,7 +52,7 @@ const addTodo = () => {
     isDone: false
   })
   // TODOの内容の入力欄を空にする
-  todoContent.value.value = ''
+  newTodoInput.value.value = ''
 }
 
 const removeTodo = (item) => {
@@ -100,7 +100,7 @@ const filterdTodos = computed(() => {
     <h2>新しいTODOの追加</h2>
     <form class="add-form" v-on:submit.prevent="addTodo">
       <!-- 内容入力フォーム -->
-      内容 <input type="text" ref="todoContent">
+      内容 <input type="text" ref="newTodoInput">
       <!-- 追加ボタンのモック -->
       <button type="submit">追加</button>
     </form>
