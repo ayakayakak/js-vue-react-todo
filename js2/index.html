@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>JS App</title>
+  <link rel="stylesheet" href="main.css">
+</head>
+<body>
+  <div id="content">
+    <h1>チュートリアルToDoリスト</h1>
+    <label>
+      <input type="radio" id="all" value="all" name="filter" checked />
+      すべて
+    </label>
+    <label>
+      <input type="radio" id="isNotDone" value="isNotDone" name="filter" />
+      未完了
+    </label>
+    <label>
+      <input type="radio" id="isDone" value="isDone" name="filter" />
+      完了済み
+    </label>
+
+    <table>
+      <!-- テーブルヘッダー -->
+      <thead>
+        <tr>
+          <th class="done">完了</th>
+          <th class="id">ID</th>
+          <th class="content">TODO</th>
+          <th class="button">-</th>
+        </tr>
+      </thead>
+      <tbody>
+        <!-- この中にtodoを追加する -->
+      </tbody>
+    </table>
+    <h2>新しいTODOの追加</h2>
+    <form class="add-form">
+      <!-- 入力フォーム -->
+      TODO <input type="text" id="todo_input">
+      <button type="submit">追加</button>
+    </form>
+  </div>
+  <script src="main.js" type="module"></script>
+</body>
+</html>
