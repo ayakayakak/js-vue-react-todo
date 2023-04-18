@@ -18,15 +18,15 @@
         <tr>
           <th class="done">完了</th>
           <th class="id">ID</th>
-          <th class="content">内容</th>
+          <th class="content">TODO</th>
           <th class="button">-</th>
         </tr>
       </thead>
       <tbody>
         <!-- [1] ここに <tr> で ToDo の要素を1行ずつ繰り返し表示したい -->
-        <tr v-for="item in filterdTodos" v-bind:key="item.id">
-          <th class="done"><input type="checkbox" v-model="item.isDone" /></th>
-          <th class="id">{{ item.id }}</th>
+        <tr v-for="item in filteredTodos" v-bind:key="item.id">
+          <td class="done"><input type="checkbox" v-model="item.isDone" /></td>
+          <td class="id">{{ item.id }}</td>
           <td class="content">{{ item.content }}</td>
           <td class="button">
             <button v-on:click="removeTodo(item)">削除</button>
@@ -37,8 +37,8 @@
 
     <h2>新しいTODOの追加</h2>
     <form class="add-form" v-on:submit.prevent="addTodo">
-      <!-- 内容入力フォーム -->
-      内容 <input type="text" ref="todoContent">
+      <!-- TODO入力フォーム -->
+      TODO <input type="text" ref="todoContent">
       <!-- 追加ボタンのモック -->
       <button type="submit">追加</button>
     </form>

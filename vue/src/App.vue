@@ -60,7 +60,7 @@ const removeTodo = (item) => {
   todos.value.splice(targetIndex, 1)
 }
 
-const filterdTodos = computed(() => {
+const filteredTodos = computed(() => {
   if(currentFilter.value === 'all') return todos.value
   if(currentFilter.value === 'isDone') return todos.value.filter((todo) => todo.isDone === true)
   if(currentFilter.value === 'isNotDone') return todos.value.filter((todo) => todo.isDone === false)
@@ -86,7 +86,7 @@ const filterdTodos = computed(() => {
       </thead>
       <tbody>
         <!-- [1] ここに <tr> で ToDo の要素を1行ずつ繰り返し表示したい -->
-        <tr v-for="item in filterdTodos" v-bind:key="item.id">
+        <tr v-for="item in filteredTodos" v-bind:key="item.id">
           <th class="done"><input type="checkbox" v-model="item.isDone" /></th>
           <th class="id">{{ item.id }}</th>
           <td class="content">{{ item.content }}</td>

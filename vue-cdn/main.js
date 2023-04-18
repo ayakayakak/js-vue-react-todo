@@ -5,10 +5,7 @@ const todoStorage = {
     const todos = JSON.parse(
       localStorage.getItem(STORAGE_KEY) || '[]'
     )
-    todos.forEach((todo, index) => {
-      todo.id = index
-    })
-    todoStorage.uid = todos.length
+    todoStorage.uid = todos[todos.length - 1].id
     return todos
   },
   save: (todos) =>  {
@@ -38,9 +35,9 @@ Vue.createApp({
     }, { deep: true }) // deep オプションでネストしているデータも監視できる
 
     const addTodo = () => {
-      // テンプレート参照を使ってTODOの内容の入力値を参照
+      // テンプレート参照を使って新しいTODOの入力値を参照
       const content = todoContent.value.value
-      // 入力がなければ何もしないでreturn
+      // 入力がなければ先の処理に進まないように
       if (!content.length) {
         return
       }
@@ -51,7 +48,7 @@ Vue.createApp({
         // 初期値はfalseで作成
         isDone: false
       })
-      // TODOの内容の入力欄を空にする
+      // TODOの入力欄を空にする
       todoContent.value.value = ''
     }
 
@@ -60,7 +57,7 @@ Vue.createApp({
       todos.value.splice(targetIndex, 1)
     }
 
-    const filterdTodos = Vue.computed(() => {
+    const filteredTodos = Vue.computed(() => {
       if(currentFilter.value === 'all') return todos.value
       if(currentFilter.value === 'isDone') return todos.value.filter((todo) => todo.isDone === true)
       if(currentFilter.value === 'isNotDone') return todos.value.filter((todo) => todo.isDone === false)
@@ -74,7 +71,7 @@ Vue.createApp({
       currentFilter,
       addTodo,
       removeTodo,
-      filterdTodos
+      filteredTodos
     }
   }
 }).mount('#app')

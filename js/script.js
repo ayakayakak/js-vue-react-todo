@@ -107,7 +107,6 @@ priorityFilterButton.addEventListener('click', () => {
 // 完了したTODOを削除する処理
 removeDoneButtton.addEventListener('click', () => {
   clearTable();
-  console.log(todoList)
   todoList = todoList.filter((item) => item.isDone === false);
   for (const item of todoList) {
     addTodoItemToTable(item);

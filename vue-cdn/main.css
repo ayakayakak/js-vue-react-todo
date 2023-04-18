@@ -14,7 +14,7 @@ thead th {
   color: #0099e4;
 }
 th,
-th {
+td {
   padding: 0 8px;
   line-height: 40px;
 }
@@ -27,7 +27,7 @@ thead th.done {
 thead th.button {
   width: 60px;
 }
-tbody td.button, tbody td.done {
+tbody td.button, tbody td.done, tbody td.id {
   text-align: center;
 }
 tbody tr td,
